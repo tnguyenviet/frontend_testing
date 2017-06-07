@@ -7,15 +7,16 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Listeners(Listener.class)
 public class BaseTest {
 
     private static final String SELENIUM_GRID_URL = "http://localhost:4444/wd/hub";
-
     // We need a thread safe environment to handle the webDriver variable in each thread separately
     private ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
@@ -36,14 +37,12 @@ public class BaseTest {
         desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, browserType);
         desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
         desiredCapabilities.setCapability("name", method.getName());
-
         webDriver.set(new RemoteWebDriver(new URL(SELENIUM_GRID_URL), desiredCapabilities));
-
         webDriver.get().manage().window().maximize();
     }
 
     @AfterMethod
-    public void quitBrowser() {
+    public void quitBrowser(Method method, Object[] testArgs) {
         webDriver.get().quit();
     }
 
