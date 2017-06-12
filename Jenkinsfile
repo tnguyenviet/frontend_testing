@@ -16,7 +16,7 @@ node('kraken') {
 
         stage 'Running in Parallel'
         try {
-            sh '/tools/run-with-selenium :maven -- bash -c "cd running-in-parallel/java-testng/complete; mvn clean test -DthreadCountProperty=2"'
+            sh '/tools/run-with-selenium :maven -- bash -c "cd running-in-parallel/java-testng/complete; mvn clean test -DthreadCountProperty=3"'
             currentBuild.result = "SUCCESS"
         } catch (e) {
             currentBuild.result = "FAILURE"
