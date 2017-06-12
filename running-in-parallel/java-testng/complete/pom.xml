@@ -8,6 +8,10 @@
     <artifactId>running-in-parallel-example-complete</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <threadCountProperty>1</threadCountProperty>
+    </properties>
+
     <dependencies>
         <!-- TestNG dependency -->
         <dependency>
@@ -46,24 +50,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
-                    <!--
-                        <properties>
-                            <property>
-                                <name>parallel</name>
-                                <value>methods</value>
-                            </property>
-                            <property>
-                                <name>dataproviderthreadcount</name>
-                                <value>2</value>
-                            </property>
-                        </properties>
-                    -->
-                        <parallel>methods</parallel>
-                        <threadCount>6</threadCount>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </build>
-
-
-    </project>
+                    <parallel>methods</parallel>
+                    <threadCount>${threadCountProperty}</threadCount>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
