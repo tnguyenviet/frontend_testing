@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-# set -e: exit asap if a command exits with a non-zero status
-# set -x: print each command right before it is executed
-set -xe
-
-curl -sSL https://raw.githubusercontent.com/dosel/t/i/p | bash -s 3 start
