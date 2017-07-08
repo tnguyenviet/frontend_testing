@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <threadCountProperty>1</threadCountProperty>
+        <threadCountProperty>3</threadCountProperty>
     </properties>
 
     <dependencies>
